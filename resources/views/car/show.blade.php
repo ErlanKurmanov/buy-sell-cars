@@ -1,3 +1,5 @@
+{{-- Car Detail --}}
+
 <x-app-layout>
     <main>
         <div class="container">

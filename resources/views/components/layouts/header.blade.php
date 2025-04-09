@@ -19,7 +19,11 @@
             />
             </svg>
         </button>
+
+
         <div class="navbar-auth">
+
+            {{-- Car create buttons --}}
             <a href="{{route('car.create')}}" class="btn btn-add-new-car">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +42,8 @@
 
             Add new Car
             </a>
+
+            {{-- My account dropdown hower over --}}
             <div class="navbar-menu" tabindex="-1">
             <a href="javascript:void(0)" class="navbar-menu-handler">
                 My Account
@@ -58,10 +64,10 @@
             </a>
             <ul class="submenu">
                 <li>
-                <a href="my_cars.html">My Cars</a>
+                <a href="">My Cars</a>
                 </li>
                 <li>
-                <a href="watchlist.html">My Favourite Cars</a>
+                <a href="{{ route('car.watchlist')}}">My Favourite Cars</a>
                 </li>
                 <li>
                 <form action="#" method="post">
@@ -70,6 +76,8 @@
                 </li>
             </ul>
             </div>
+
+            {{-- Sign up button --}}
             <a href="{{route('/signup')}}" class="btn btn-primary btn-signup">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,6 +96,8 @@
 
             Signup
             </a>
+
+            {{-- Sign up button --}}
             <a href="{{route('/login')}}" class="btn btn-login flex items-center">
             <svg
                 style="width: 18px; fill: currentColor; margin-right: 4px"

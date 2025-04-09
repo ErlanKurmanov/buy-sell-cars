@@ -94,7 +94,7 @@
 
         <x-search-form />
 
-        <!-- New Cars -->
+        <!-- List of new Cars -->
         <section>
           <div class="container">
             <h2>Latest Added Cars</h2>
@@ -104,9 +104,10 @@
                   <x-car-item :$car/>
                 @endforeach
             </div>
+              {{ $cars->onEachSide(1)->links() }}
           </div>
         </section>
-        <!--/ New Cars -->
+        <!--/ List of new Cars -->
       </main>
 
 

@@ -1,3 +1,4 @@
+{{-- It's my Favourite section --}}
 <x-app-layout>
     <main>
         <!-- New Cars -->

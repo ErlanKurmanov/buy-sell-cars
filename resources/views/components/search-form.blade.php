@@ -1,8 +1,9 @@
+
         <!-- Find a car form -->
         <section class="find-a-car">
             <div class="container">
               <form
-                action="{{route('car.search')}}"
+                action="{{route('cars.index')}}"
                 method="GET"
                 class="find-a-car-form card flex p-medium"
               >
