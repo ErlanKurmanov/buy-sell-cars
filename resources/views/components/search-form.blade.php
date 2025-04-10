@@ -1,12 +1,13 @@
-
+@props(['propName'])
         <!-- Find a car form -->
         <section class="find-a-car">
             <div class="container">
               <form
-                action="{{route('cars.index')}}"
+                action="{{route('cars.showSearch')}}"
                 method="GET"
                 class="find-a-car-form card flex p-medium"
               >
+              {{-- inputs --}}
                 <div class="find-a-car-inputs">
                   <div>
                     <select id="makerSelect" name="maker_id">

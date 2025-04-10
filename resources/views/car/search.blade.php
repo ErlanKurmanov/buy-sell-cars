@@ -25,7 +25,7 @@
                 <div class="search-car-results-wrapper">
                     <div class="search-cars-sidebar">
                         <div class="card card-found-cars">
-                            <p class="m-0">Found <strong>{{ $cars->total() }}</strong> cars</p>
+                            <p class="m-0">Found <strong></strong> cars</p>
 
                             <button class="close-filters-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px">
@@ -44,9 +44,9 @@
                                         <label class="mb-medium">Maker</label>
                                         <select id="makerSelect" name="maker_id">
                                             <option value="">Maker</option>
-                                            @foreach ($makers as $maker)
+                                            {{-- @foreach ($makers as $maker)
                                                 <option value="{{$maker->id}}">{{$maker->name}}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                             {{-- <option value="4">Chevrolet</option>
                                             <option value="2">Ford</option>
                                             <option value="3">Honda</option>
@@ -409,17 +409,17 @@
                         </section>
                         <!--/ Find a car form -->
                     </div>
+                    @if ($cars->count() > 0)
+                    @endif
+                        <div class="search-cars-results">
+                            <div class="car-items-listing">
+                                @foreach($cars as $car)
+                                    <x-car-item :$car/>
+                                @endforeach
+                            </div>
+                            {{ $cars->onEachSide(1)->links() }}
 
-                    <div class="search-cars-results">
-                        <div class="car-items-listing">
-
-                            @foreach($cars as $car)
-                                <x-car-item :$car/>
-                            @endforeach
                         </div>
-                        {{ $cars->onEachSide(1)->links() }}
-
-                    </div>
                 </div>
             </div>
         </section>

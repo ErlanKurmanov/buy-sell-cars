@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 //Provides with data to fill main menu
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/', [CarSearchController::class, 'showForm'])->name('carSearch.showForm');
+//Route::get('/', [CarSearchController::class, 'showForm'])->name('carSearch.showForm');
 
 
 
@@ -17,7 +17,7 @@ Route::get('/', [CarSearchController::class, 'showForm'])->name('carSearch.showF
 
 // Search
 // Route to display the initial search form (if needed separately)
-Route::get('/cars', [CarSearchController::class, 'showForm'])->name('cars.index');
+Route::get('/cars', [CarSearchController::class, 'showForm'])->name('cars.showSearch');
 // Route to handle the search submission
 Route::get('/cars/search', [CarSearchController::class, 'search'])->name('cars.search');
 
