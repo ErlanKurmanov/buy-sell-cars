@@ -19,11 +19,9 @@ class CarSearchController extends Controller
     {
         // Fetch data needed to populate the dropdowns initially
         $makers = Maker::orderBy('name')->get();
-        $models = Model::orderBy('name')->get();
         $fuelTypes = FuelType::orderBy('name')->get();
         $regions = Region::orderBy('name')->get();
         $carTypes = CarType::orderBy('name')->get();
-        $cities = City::orderBy('name')->get();
 //        dd($makers);
 
         // Get default list of cars (most recent)
@@ -35,7 +33,33 @@ class CarSearchController extends Controller
         return view('car.search', compact('cars', 'makers', 'carTypes', 'fuelTypes', 'regions'));
     }
 
+    public function getCarModel(string $makerId)
+    {
+        $model = Model::where('maker_id', $makerId)
+            ->orderBy('name')
+            ->get();
+//        dd($model);
+        return response()->json([
+            'models' => $model,
+        ]);
 
+    }
+
+    public function getCitiesByRegionId($regionId)
+    {
+        $cities = City::where('region_id', $regionId)
+            ->orderBy('name')
+            ->get();
+
+        return response()->json([
+                'cities' => $cities
+        ]);
+    }
+
+    public function getCity()
+    {
+
+    }
 
     public function search(Request $request)
     {

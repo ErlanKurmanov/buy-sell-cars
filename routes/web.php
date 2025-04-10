@@ -13,6 +13,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
+
 // --------- Car operation routes
 
 // Search
@@ -20,6 +21,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cars', [CarSearchController::class, 'showForm'])->name('cars.showSearch');
 // Route to handle the search submission
 Route::get('/cars/search', [CarSearchController::class, 'search'])->name('cars.search');
+
+// Fetching model for js ajax
+Route::get('models/{makerId}', [CarSearchController::class, 'getCarModel']);
+Route::get('/cities/{regionId}', [CarSearchController::class, 'getCitiesByRegionId']);
 
 
 // My favorite cars section
