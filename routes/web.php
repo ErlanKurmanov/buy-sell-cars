@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CarSearchController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 
 //Provides with data to fill main menu
@@ -35,6 +35,12 @@ Route::resource('car', CarController::class);
 //Route::get('/', [CarController::class, 'index'])->name('car.index');
 
 
-// Sign up and sign in
-Route::get('/signup', [SignupController::class, 'create'])->name('/signup');
-Route::get('/login', [LoginController::class, 'create'])->name('/login');
+// Registration
+Route::get('/signup', [SignupController::class, 'showRegistrationForm'])->name('signup');
+Route::post('/signup', [SignupController::class, 'register'])->name('signup');
+
+//Login & logout
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+

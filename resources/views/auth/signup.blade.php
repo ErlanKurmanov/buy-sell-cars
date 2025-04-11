@@ -1,31 +1,41 @@
 <x-guest-layout title="Signup" bodyClass="page-signup">
-    <form action="" method="post">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{route('signup')}}" method="POST">
+        @csrf
         <div class="form-group">
-            <input type="email" placeholder="Your Email" />
+            <input type="email" name="email" placeholder="Your Email" {{ old('email') }}/>
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Your Password" />
+            <input type="password" name="password" placeholder="Your Password" />
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Repeat Password" />
+            <input type="password" name="password_confirmation" placeholder="Repeat Password" />
         </div>
         <hr />
         <div class="form-group">
-            <input type="text" placeholder="First Name" />
+            <input type="text" name="name" placeholder="Your Name" {{ old('name') }}/>
         </div>
+
         <div class="form-group">
-            <input type="text" placeholder="Last Name" />
+            <input type="text" name="phone" placeholder="Phone" {{ old('phone') }}/>
         </div>
-        <div class="form-group">
-            <input type="text" placeholder="Phone" />
-        </div>
-    </form>
         <button class="btn btn-primary btn-login w-full">Register</button>
+    </form>
+
 
 
         <x-slot:footerLink>
             Already have an account? -
-            <a href="/signup.html">Click here to create one</a>
+            <a href="/login">Click here to login</a>
         </x-slot:footerLink>
 
 </x-guest-layout>
