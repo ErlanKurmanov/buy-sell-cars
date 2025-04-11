@@ -92,7 +92,7 @@
 
       <main>
 
-        <x-search-form />
+        <x-search-form :$cars :$makers :$carTypes :$fuelTypes :$regions/>
 
         <!-- List of new Cars -->
         <section>

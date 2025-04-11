@@ -22,7 +22,6 @@ class CarSearchController extends Controller
         $fuelTypes = FuelType::orderBy('name')->get();
         $regions = Region::orderBy('name')->get();
         $carTypes = CarType::orderBy('name')->get();
-//        dd($makers);
 
         // Get default list of cars (most recent)
         $cars = Car::where('published_at', '<', now())
@@ -33,12 +32,13 @@ class CarSearchController extends Controller
         return view('car.search', compact('cars', 'makers', 'carTypes', 'fuelTypes', 'regions'));
     }
 
+
+    // For dynamic cascading dropdown list of model and city
     public function getCarModel(string $makerId)
     {
         $model = Model::where('maker_id', $makerId)
             ->orderBy('name')
             ->get();
-//        dd($model);
         return response()->json([
             'models' => $model,
         ]);
@@ -56,10 +56,6 @@ class CarSearchController extends Controller
         ]);
     }
 
-    public function getCity()
-    {
-
-    }
 
     public function search(Request $request)
     {
@@ -70,9 +66,9 @@ class CarSearchController extends Controller
         // Apply filters based on request parameters
 
         // Filter by maker
-        if ($request->filled('maker_id')) {
-            $query->where('maker_id', $request->maker_id);
-        }
+//        if ($request->filled('maker_id')) {
+//            $query->where('maker_id', $request->maker_id);
+//        }
 
         // Filter by model
         if ($request->filled('model_id')) {
@@ -116,12 +112,12 @@ class CarSearchController extends Controller
         if ($request->filled('city_id')) {
             $query->where('city_id', $request->city_id);
         }
-        // Filter by state/region (through city relationship)
-        elseif ($request->filled('state_id')) {
-            $query->whereHas('city', function($q) use ($request) {
-                $q->where('region_id', $request->state_id);
-            });
-        }
+        // Filter by region (through city relationship)
+//        elseif ($request->filled('state_id')) {
+//            $query->whereHas('city', function($q) use ($request) {
+//                $q->where('region_id', $request->state_id);
+//            });
+//        }
 
         // Apply sorting if specified
         if ($request->filled('sort')) {
