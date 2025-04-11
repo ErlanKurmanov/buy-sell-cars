@@ -70,7 +70,8 @@
                 <a href="{{ route('car.watchlist')}}">My Favourite Cars</a>
                 </li>
                 <li>
-                <form action="#" method="post">
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
                     <button>Logout</button>
                 </form>
                 </li>
@@ -78,7 +79,7 @@
             </div>
 
             {{-- Sign up button --}}
-            <a href="{{route('/signup')}}" class="btn btn-primary btn-signup">
+            <a href="{{route('signup')}}" class="btn btn-primary btn-signup">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -97,8 +98,8 @@
             Signup
             </a>
 
-            {{-- Sign up button --}}
-            <a href="{{route('/login')}}" class="btn btn-login flex items-center">
+            {{-- Login button --}}
+            <a href="{{route('login')}}" class="btn btn-login flex items-center">
             <svg
                 style="width: 18px; fill: currentColor; margin-right: 4px"
                 viewBox="0 0 1024 1024"

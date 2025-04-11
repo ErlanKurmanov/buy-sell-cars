@@ -1,4 +1,4 @@
-@props(['propName'])
+@props(['cars', 'makers', 'carTypes', 'fuelTypes', 'regions' ])
         <!-- Find a car form -->
         <section class="find-a-car">
             <div class="container">
