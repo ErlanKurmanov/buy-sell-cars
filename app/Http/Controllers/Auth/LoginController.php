@@ -24,7 +24,7 @@ class LoginController extends Controller
         // Attempt to log in
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Authentication successful
-            return redirect()->route('home')->with('success', 'Logged in successfully!');
+            return redirect()->route('home.index')->with('success', 'Logged in successfully!');
         }
 
         // Authentication failed

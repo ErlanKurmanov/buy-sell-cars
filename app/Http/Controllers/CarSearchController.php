@@ -17,7 +17,7 @@ class CarSearchController extends Controller
 
     public function showForm()
     {
-        // Fetch data needed to populate the dropdowns initially
+        // Should be in the Models
         $makers = Maker::orderBy('name')->get();
         $fuelTypes = FuelType::orderBy('name')->get();
         $regions = Region::orderBy('name')->get();
@@ -36,6 +36,7 @@ class CarSearchController extends Controller
     // For dynamic cascading dropdown list of model and city
     public function getCarModel(string $makerId)
     {
+        // should be in the models as well:
         $model = Model::where('maker_id', $makerId)
             ->orderBy('name')
             ->get();

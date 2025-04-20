@@ -13,7 +13,7 @@
                     @endforeach
                 </div>
 
-                {{ $cars->onEachSide(1)->links() }}
+                {{ $cars->links() }}
             </div>
         </section>
         <!--/ New Cars -->

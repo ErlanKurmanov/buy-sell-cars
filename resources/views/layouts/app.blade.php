@@ -2,8 +2,8 @@
 
 <x-base-layoute :$title :$bodyClass>
 
-    <x-layouts.header/>
-
+{{--    <x-layouts.header/>--}}
+    @include('partials.header')
     {{ $slot }}
 
 </x-base-layoute>

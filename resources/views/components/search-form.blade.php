@@ -20,6 +20,7 @@
                       <option value="1">Toyota</option>
                     </select>
                   </div>
+
                   <div>
                     <select id="modelSelect" name="model_id">
                       <option value="" style="display: block">Model</option>

@@ -1,3 +1,4 @@
+{{--My cars page--}}
 <x-app-layout bodyClass="page-my-cars">
     <main>
         <div>
