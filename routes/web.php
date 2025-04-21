@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CarSearchController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +20,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 //My cars page
 Route::get('/cars', [CarController::class, 'index'])->name('car.index');
 
-Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () {
     Route::get('/cars/create', [CarController::class, 'create'])->name('car.create');
-    Route::post('/cars', [CarController::class, 'store'])->name('cars.store');
+    Route::post('/cars', [CarController::class, 'store'])->name('cars.store')->withoutMiddleware(VerifyCsrfToken::class);
     //Route::post('/cars', function(Request $request){
     //    dd($request->all());
     //})->name('cars.store');
-});
+//});
 Route::get('/cars/{car}', [CarController::class, 'show'])->name('car.show');
 
 
@@ -45,7 +46,13 @@ Route::get('/cars/search', [CarSearchController::class, 'search'])->name('cars.s
 Route::get('models/{makerId}', [CarSearchController::class, 'getCarModel']);
 Route::get('/cities/{regionId}', [CarSearchController::class, 'getCitiesByRegionId']);
 
+Route::get('/token', function (Request $request) {
+    $token = $request->session()->token();
+    dd($token);
+    $token = csrf_token();
 
+    // ...
+});
 
 
 

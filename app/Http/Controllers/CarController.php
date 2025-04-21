@@ -66,9 +66,9 @@ class CarController extends Controller
      */
     public function store(StoreRequest $request)
     {
-
+        dd($request);
         $inputData =$request->validated();
-        dd($inputData);
+
         $this->service->store($inputData);
 
         return redirect()->route('home.index')->with('success', 'Car created successfully!');
